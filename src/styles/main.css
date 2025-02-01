@@ -1,0 +1,33 @@
+* {
+    font-family:inter ,Arial, sans-serif;
+
+}
+
+
+.container {
+    margin: 0 auto;
+    padding: 10px;
+    max-width: 80%;
+}
+
+/* add-btn */
+
+.add-btn-wrap {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+
+}
+.add-btn {
+    border-radius: 100%;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    border: none;
+    background-color:#3674B5;
+    color: white;
+    box-shadow: 1px 3px 10px rgba(0,0,0,0.5);
+    font-weight: bold;
+    font-size: x-large;
+}
+
