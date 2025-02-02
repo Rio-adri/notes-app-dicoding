@@ -10,6 +10,7 @@ const home = () => {
     const modal = document.querySelector('modal-component');
     const noteList = document.querySelector('note-list');
 
+
     addBtn.addEventListener('click', function () {
         modal.showModal();
     });

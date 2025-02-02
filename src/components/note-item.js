@@ -1,3 +1,4 @@
+
 class NoteItem extends HTMLElement {
     constructor () {
         super();
@@ -49,7 +50,8 @@ class NoteItem extends HTMLElement {
             }
 
 
-            .button-wrap button {
+            note-item .button-wrap button {
+                border-radius:5px;
                 border:1px solid #3674B5;
                 color : #3674B5;
                 padding:10px;
@@ -86,17 +88,6 @@ class NoteItem extends HTMLElement {
             </div>
         `;
     }
-
-    archived () {
-        const archiveBtn = this.querySelector('#archivedBtn');
-
-        archiveBtn.addEventListener('click', ()=>{
-            this._note['archived'] = !this._note['archived'];
-            this.render();
-        })
-    }
-
-    
     
 }
 

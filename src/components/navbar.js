@@ -2,6 +2,7 @@ class NavbarComponent extends HTMLElement{
     constructor () {
         super();
 
+        
         this._style = document.createElement('style');
     }
 
@@ -12,6 +13,8 @@ class NavbarComponent extends HTMLElement{
     updateStyle() {
         this._style.textContent = `
             .navbar {
+                position:sticky;
+                top:10px;
                 background-color:#3674B5 ;
                 color: white;
                 margin: 0 auto;

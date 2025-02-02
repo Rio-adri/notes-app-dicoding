@@ -1,61 +1,60 @@
 class NoteList extends HTMLElement {
-    constructor () {
+    constructor() {
         super();
 
         this._noteList = [];
+        this._shadowRoot = this.attachShadow({ mode: 'open' });
         this._style = document.createElement('style');
     }
 
+    // Ambil semua catatan dari Notes class
     setNoteList(value) {
         this._noteList = value;
-
         this.render();
     }
 
-
     connectedCallback() {
+        // Mengambil data catatan dari kelas Notes dan menampilkan
         this.render();
     }
 
     updateStyle() {
         this._style.textContent = `
-            note-list {
+            :host  {
                 display:grid;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));;
+                grid-template-columns: repeat(1, minmax(200px, 1fr));
                 text-align: center;
                 gap: 20px;
             }
                 
             @media(min-width: 768px) {
-                note-list {
+                :host {
                     display:grid;
                     grid-template-columns: repeat(2, 1fr);
                 }
             }
 
             @media(min-width: 1024px) {
-                note-list {
+                :host {
                     display:grid;
                     grid-template-columns: repeat(3, 1fr);
                 }
             }
-            `;
-
-
+        `;
     }
 
     render() {
         this.updateStyle();
 
-        const noteElements = this._noteList.map((elemen)=>{
-            const note = document.createElement('note-item');
-            note.setNote(elemen);
+        // Menghapus slot dan menambahkan note-item untuk setiap catatan
+        this._shadowRoot.innerHTML = ''; // Menghapus isi sebelumnya
+        this._shadowRoot.appendChild(this._style);
 
-            return note;
+        this._noteList.forEach(note => {
+            const noteItem = document.createElement('note-item');
+            noteItem.setNote(note); // Kirimkan data ke note-item
+            this._shadowRoot.appendChild(noteItem);
         });
-
-        this.innerHTML = '';
-        this.append(this._style,...noteElements);
     }
 }
 
