@@ -2,7 +2,7 @@ class NavbarComponent extends HTMLElement{
     constructor () {
         super();
 
-        
+        this._shadowRoot = this.attachShadow({mode:'open'});
         this._style = document.createElement('style');
     }
 
@@ -51,7 +51,7 @@ class NavbarComponent extends HTMLElement{
     render() {
         this.updateStyle();
 
-        this.innerHTML = `
+        const template= `
             ${this._style.outerHTML}
 
             <nav class="navbar" id="navbar">
@@ -66,6 +66,8 @@ class NavbarComponent extends HTMLElement{
                     <p>logo</p>
                 </div>
             </nav>`;
+
+        this._shadowRoot.innerHTML = template;
     }
 }
 

@@ -14,17 +14,69 @@
         <navbar-component></navbar-component>
 
         <main>
+            <template id="noteItem">
+                <style>
+                    :host {
+                        display:flex;
+                        flex-direction:column;
+                        text-align: left;
+                        padding: 20px;
+                        border-radius: 10px;
+                        box-shadow: 1px 1px 10px rgba(0,0,0,0.1);
+                    }
+                    
+
+                    .note-body {
+                        flex-grow: 1; 
+                    }
+
+                    .button-wrap {
+                        align-self:flex-start;
+                        display: flex;
+                        gap: 10px;
+                    }
+
+
+                    .button-wrap button {
+                        border-radius:5px;
+                        border:1px solid #3674B5;
+                        color : #3674B5;
+                        padding:10px;
+                        background-color:transparent;
+
+                    }
+
+                    .button-wrap button:hover {
+                        border:none;
+                        color : white;
+                        padding:10px;
+                        background-color:#3674B5;
+                        font-weight:bold;
+                    }
+                </style>
+                <!-- html -->
+                    <h1 class="note-title">
+                        <slot name="title">Judul Catatan</slot>
+                    </h1>
+                    <p class="note-body">
+                        <slot name="body">Isi Catatan</slot>
+                    </p>
+                    <div class="button-wrap">
+                        <button class="archived-btn" id="archivedBtn">Archived</button>
+                        <button class="delete-btn" id="deleteBtn">Delete</button>
+                    </div>
+            </template>
+
             <note-list></note-list>
         </main>
 
         <div class="add-btn-wrap" id="addBtnWrap">
             <button id="addBtn" class="add-btn">+</button>
         </div>
+
         <modal-component></modal-component>
-
-            
     </div>
-    <script type="module" src="src/view/archive.js"></script>
 
+    <script type="module" src="src/view/archive.js"></script>
 </body>
 </html>

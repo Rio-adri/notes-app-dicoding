@@ -2,6 +2,7 @@ class ModalTambah extends HTMLElement{
     constructor () {
         super();
 
+        this._shadowRoot = this.attachShadow({mode:'open'});
         this._style = document.createElement('style');
     }
 
@@ -89,7 +90,7 @@ class ModalTambah extends HTMLElement{
     render() {
         this.updateStyle();
 
-        this.innerHTML = `
+        this._shadowRoot.innerHTML = `
             ${this._style.outerHTML}
 
             <!-- tambah modal -->
@@ -120,16 +121,16 @@ class ModalTambah extends HTMLElement{
     }
 
     showModal() {
-        this.querySelector("#modalOuter").style.display='flex';
+        this._shadowRoot.querySelector("#modalOuter").style.display='flex';
     }
 
     hideModal() {
-        this.querySelector("#modalOuter").style.display='none';
+        this._shadowRoot.querySelector("#modalOuter").style.display='none';
     }
 
     closeEvent () {
-        const closeButton = this.querySelector("#closeButton");
-        const modalOuter = this.querySelector("#modalOuter");
+        const closeButton = this._shadowRoot.querySelector("#closeButton");
+        const modalOuter = this._shadowRoot.querySelector("#modalOuter");
 
         closeButton.addEventListener("click", () => this.hideModal());
         

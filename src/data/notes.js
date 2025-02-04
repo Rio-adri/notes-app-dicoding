@@ -112,6 +112,24 @@ class Notes {
         return this._data;
     }
 
+    archiveNote(id) {
+      const note = this._data.find(note => note.id === id);
+      if (note) {
+          note.archived = true;
+          return `Note with id ${id} has been archived.`;
+      }
+      return `Note with id ${id} not found.`;
+    }
+
+    deleteNoteById(id) {
+      const index = this._data.findIndex(note => note.id === id);
+      if (index !== -1) {
+          this._data.splice(index, 1);
+          return `Note with id ${id} has been deleted.`;
+      }
+      return `Note with id ${id} not found.`;
+    }
+
 
 
 }
