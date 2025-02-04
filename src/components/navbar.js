@@ -1,7 +1,9 @@
 class NavbarComponent extends HTMLElement{
+    static observedAttribute = ['href'];
     constructor () {
         super();
 
+        this._href = this.getAttribute('href');
         this._shadowRoot = this.attachShadow({mode:'open'});
         this._style = document.createElement('style');
     }
@@ -37,12 +39,12 @@ class NavbarComponent extends HTMLElement{
                 list-style-type: none;
             }
 
-            .navbar .wrap-menu ul li a {
+            ::slotted(a) {
                 text-decoration:none;
                 color: white;
             }
 
-            .navbar .wrap-menu ul li a:hover {
+            ::slotted(a):hover {
                 cursor: pointer;
                 font-weight: bold;
             }`;
@@ -57,8 +59,8 @@ class NavbarComponent extends HTMLElement{
             <nav class="navbar" id="navbar">
                 <div class="wrap-menu">
                     <ul>
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="../../archived.html">Archived</a></li>
+                        <li><slot name="home" href=${this._href }>Home</slot></li>
+                        <li><slot name="archived" href=${this._href }>Archived</slot></</li>
                     </ul>
                 </div>
 
@@ -68,6 +70,12 @@ class NavbarComponent extends HTMLElement{
             </nav>`;
 
         this._shadowRoot.innerHTML = template;
+    }
+
+    attributeChangedCallback(name, oldValue, newValue) {
+        this[`_${name}`] = newValue;
+
+        this.render();
     }
 }
 

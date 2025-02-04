@@ -11,7 +11,10 @@
 </head>
 <body>
     <div class="container">
-        <navbar-component></navbar-component>
+        <navbar-component>
+            <a slot="home" href="index.html">Home</a>
+            <a slot="archived" href="index.html">Archive</a>
+        </navbar-component>
 
         <main>
             <template id="noteItem">
