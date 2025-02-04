@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>NotesApp</title>
     <link rel="stylesheet" href="src/styles/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,8 @@
                     :host {
                         display:flex;
                         flex-direction:column;
+                        justify-content: space-between;
+                        gap: 20px;
                         text-align: left;
                         padding: 20px;
                         border-radius: 10px;
@@ -58,12 +60,8 @@
                     }
                 </style>
                 <!-- html -->
-                    <h1 class="note-title">
-                        <slot name="title">Judul Catatan</slot>
-                    </h1>
-                    <p class="note-body">
-                        <slot name="body">Isi Catatan</slot>
-                    </p>
+                    <slot name="title" class="note-title">Judul Catatan</slot>
+                    <slot name="body" class="note-body">Isi Catatan</slot>
                     <div class="button-wrap">
                         <button class="archived-btn" id="archivedBtn">Archived</button>
                         <button class="delete-btn" id="deleteBtn">Delete</button>

@@ -16,6 +16,7 @@ class NoteItem extends HTMLElement {
     render() {
         this._shadowRoot.appendChild(this._template);
     }
+
     
 }
 

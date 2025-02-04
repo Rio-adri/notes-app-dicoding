@@ -53,7 +53,7 @@ class NoteList extends HTMLElement {
             const noteItem = document.createElement('note-item');
             noteItem.setAttribute('data-id',note.id);
             noteItem.innerHTML = `
-                <h4 slot="title">${note.title}</h4>
+                <h2 slot="title">${note.title}</h2>
                 <p slot="body">${note.body}</p>
             `;
             this._shadowRoot.appendChild(noteItem);
